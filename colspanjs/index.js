@@ -167,3 +167,63 @@ console.log(ThirdRow.Author,'|',ThirdRow.Creation,'|',ThirdRow.FirstConcept,'|',
 console.log(FourthRow.Author,'|',FourthRow.Creation,'|',FourthRow.FirstConcept,'|','|' ) //a FourthRow objectnek a három adata meghívásával kiíratjuk a negyedik sort
 console.log(FinalRow.Author,'|',FinalRow.Creation,'|',FinalRow.FirstConcept,'|',FinalRow.SecondConcept,'|' ) //a FinalRow objectnek a négy adata meghívásával kiíratjuk az utolsó sort
 
+/**
+ * @type {string} A header adatait beletesszük
+ */
+const HeaderArr = [ //megadjuk a header celláinak tartalmát egy arrayben
+    'Szerző',   //első adat
+    'Mű',       //második
+    'Fogalmak', //harmadik
+]
+
+/**
+ * @type {string} az első sor adatait tesszük bele
+ */
+const FirstRowArr = [ //megadjuk az első sor celláinak tartalmát egy arrayben
+    'Apolliniare', //első (Szerző)
+    'A megsebzett galamb és a szökőkút', //második(Mű)
+    'képvers', //harmadik(első fogalom)
+    'emlékezés', //negyedik (második fogalom)
+]
+
+/**
+ * @type {string} //második sor adatait tesszük bele
+ */
+const SecondRowArr = [ //megadjuk a második sor celláinak tartalmát egy arrayben
+    'Apollinaire', //első (Szerző)
+    'Búcsú', //második(Mű)
+    'avantgárd', //harmadik(első fogalom)
+]
+ /**
+ * @type {string} //harmadik sor adatait tesszük bele
+ */
+const ThirdRowArr = [ //megadjuk a harmadik celláinak tartalmát egy arrayben
+    'Thomas Mann', //első (Szerző)
+    'Mario és a varázsló', //második(Mű)
+    'kisregény' //harmadik(első fogalom)
+]
+/**
+ * @type {string} //negyedik sor adatait tesszük bele
+ */
+const FourthRowArr = [ //megadjuk a negyedik celláinak tartalmát egy arrayben
+    'Franz Kafka', //első (Szerző)
+    'A per', //második(Mű)
+    'regény' //harmadik(első fogalom)
+]
+/**
+ * @type {string} //ötödik sor adatait tesszük bele
+ */
+
+const FinalRowArr = [ //megadjuk az utolsó sor celláinak tartalmát egy arrayben
+    'Franz Kafka', //első (Szerző)
+    'Az átváltozás', //második(Mű)
+    'kisregény', //harmadik(első fogalom)
+    'groteszk' //negyedik (második fogalom)
+]
+
+console.log(HeaderArr[0],'|',HeaderArr[1],'|',HeaderArr[2],'|','|',) //Kiíratjuk a headert a HeaderArr elemeivel amiből az első(0 indexen lévő) a Szerző, a második a Mű, a harmadik a Fogalmak
+console.log(FirstRowArr[0],'|',FirstRowArr[1],'|',FirstRowArr[2],'|',FirstRowArr[3],'|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom, a negyedik a második fogalom
+console.log(SecondRowArr[0],'|',SecondRowArr[1],'|',SecondRowArr[2],'|','|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom
+console.log(ThirdRowArr[0],'|',ThirdRowArr[1],'|',ThirdRowArr[2],'|','|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom
+console.log(FourthRowArr[0],'|',FourthRowArr[1],'|',FourthRowArr[2],'|','|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom
+console.log(FinalRowArr[0],'|',FinalRowArr[1],'|',FinalRowArr[2],'|',FinalRowArr[3],'|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom, a negyedik a második fogalom
