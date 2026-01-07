@@ -99,18 +99,19 @@ renderHeader(header,thead) //meghívjuk a függvényt, rendereljük a fejlécet
 /**
  * rendereli a táblázat törzset
  * @param {object} Array tömb ami tartalmazza az adatokat az adatsorokhoz
+ * @param {HTMLTableElement} tableBody a táblázat törzse
  * @returns {void} nem tér vissza semmivel
  */
-function RenderArray(Array) //Függvény ami renderel egy táblázatot, 2
+function RenderArray(Array, tableBody) //Függvény ami renderel egy táblázatot, 2
 {
-    tbody.innerHTML = '' //töröljük a táblázattörzsben lévő adatokat, hogy ne legyen több táblázat, hanem a táblázat ki legyen cserélve az újabb verzióra
+    tableBody.innerHTML = '' //töröljük a táblázattörzsben lévő adatokat, hogy ne legyen több táblázat, hanem a táblázat ki legyen cserélve az újabb verzióra
     for(const a of Array) //for ciklus ami végigiterál az adatsorokat tartalmazó tömbön, és egy változó ami felveszi a tömbben lévő objektumot
     {
     /**
      * @type {HTMLTableRowElement} Táblázat sor
      */
     const TableDataRowFirst = document.createElement('tr') //Létrehozunk egy táblázatSort
-    tbody.appendChild(TableDataRowFirst) //amit hozzáfűzünk a táblázatTörzshöz
+    tableBody.appendChild(TableDataRowFirst) //amit hozzáfűzünk a táblázatTörzshöz
     /**
      * @type {HTMLTableCellElement} táblázat sor cella
      */
@@ -146,7 +147,7 @@ function RenderArray(Array) //Függvény ami renderel egy táblázatot, 2
     }
     
 }
-RenderArray(DataArray) //Táblázat renderelés meghívása, a fejléc tömbböt, és az adattömböt tesszük bele
+RenderArray(DataArray,tbody) //Táblázat renderelés meghívása, a fejléc tömbböt, és az adattömböt tesszük bele
 
 
  /**
@@ -167,7 +168,7 @@ RendButtonSimple.addEventListener('click',function() //a gombhoz hozzáadunk egy
         FirstConcept: 'ElsőFogalomBlank' //Első Fogalom példaszöveg
     }
     DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
-    RenderArray(DataArray) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
+    RenderArray(DataArray,tbody) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
 })
 
  /**
@@ -189,7 +190,7 @@ RendButtonDouble.addEventListener('click',function() //a gombhoz hozzáadunk egy
         SecondConcept: 'MásodikFogalomBlank' //Második Fogalom példaszöveg
     }
     DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
-    RenderArray(DataArray) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
+    RenderArray(DataArray,tbody) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
 })
 
 
