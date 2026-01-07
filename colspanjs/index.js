@@ -1,10 +1,4 @@
 
-
-/**
- * @type {string} header elemei
- */
-const header = ['Szerző','Mű','Fogalmak'] //header elemei
-
 /**
  * @type {Author:string,Creation:string,FirstConcept:string,SecondConcept?:string} Array elemei, ahol SecondConcept nem biztos hogy van
  */
@@ -38,6 +32,21 @@ const DataArray = [ //Array
     }
 ]
 
+/**
+ * @type {Title:string,colSpan:colSpan} header elemei
+ */
+const header =  [ //fejléc objektum
+{ //header elemei
+    Title: 'Szerző' //Szerző
+},
+{
+    Title: 'Mű' //Mű
+},
+{
+    Title: 'Fogalmak', //Fogalmak
+    colSpan: 2 //oszlopszélesség 2
+}
+]
 
     /**
      * @type {HTMLTableElement} Táblázat 
@@ -45,23 +54,56 @@ const DataArray = [ //Array
     const table = document.createElement('table') //Létrehozunk egy táblázat elementet
     document.body.appendChild(table) //Hozzáfűzzük a doksi Bodyjához
 
-/**
- * Rendereli az index.htmlben a táblázatot
- * @param {object} Array Az adatsorok elemeit tartalmazó tömb
- * @returns {void} nem returnol semmivel
- */
-function RenderArray(Array) //Függvény ami renderel egy táblázatot, 2
-{
     /**
-     * @type {HTMLTableElement} fejléc
+     * @type {HTMLTableElement} thead
      */
-    renderHeader(header) // a fejlécet rendereli
+    const thead = document.createElement('thead') //fejlécet létrehozunk
+    table.appendChild(thead) //hozzáfűzzük a táblázathoz
+
     /**
      * @type {HTMLTableElement} TáblázatTörzs
      */
     const tbody = document.createElement('tbody') //Létrehozunk egy táblázat törzs elemet
     table.appendChild(tbody) //amit hozzáfűzünk a táblázathoz
-    
+
+
+/**
+ * a fejlécet fogja renderelni
+ * @param {object} headerArr fejléc szöveget tartalmazó tömb
+ * @param {HTMLTableElement} tHead a fejléc amihez fűzzük
+ * @returns {void} nem tér vissza semmivel
+ */
+function renderHeader(headerArr,tHead) //függvény ami a fejlécet rendereli
+{
+    /**
+     * @type {HTMLTableRowElement} egy sor amihez fűzzük a cellákat
+     */
+    const TableHeaderRow = document.createElement('tr') //Létrehozunk egy sort
+    tHead.appendChild(TableHeaderRow) //hozzáfűzzük a fejléchez a sort
+    for(let i = 0; i<headerArr.length;i++) //for ciklus, végigmegy 0-tól a headerarr tömb hosszúságáigm így az indexekkel meg tudjuk kapni az objektum értékét
+    {
+        /**
+         * @type {HTMLTableCellElement} cella amit majd hozzáfűzünk a fejléchez
+         */
+        const TableHeadCell = document.createElement('th') //létrehozunk egy fejléc cellát
+        TableHeaderRow.appendChild(TableHeadCell) //hozzáfűzzük a sorhoz
+        TableHeadCell.innerText = headerArr[i].Title //a fejléc cella szövege a jelenlegi indexen lévő tömb elemének a Title értéke lesz
+        if(headerArr[i].colSpan == 2) //leellenőrizzük hogy a tömb jelenlegi objektumának a colspan értéke 2-e, igazág
+        {
+            TableHeadCell.colSpan = 2 //a cellának az oszlopszélességét beállítjuk 2-re
+        }
+    }
+}
+renderHeader(header,thead) //meghívjuk a függvényt, rendereljük a fejlécet
+
+/**
+ * rendereli a táblázat törzset
+ * @param {object} Array tömb ami tartalmazza az adatokat az adatsorokhoz
+ * @returns {void} nem tér vissza semmivel
+ */
+function RenderArray(Array) //Függvény ami renderel egy táblázatot, 2
+{
+    tbody.innerHTML = '' //töröljük a táblázattörzsben lévő adatokat, hogy ne legyen több táblázat, hanem a táblázat ki legyen cserélve az újabb verzióra
     for(const a of Array) //for ciklus ami végigiterál az adatsorokat tartalmazó tömbön, és egy változó ami felveszi a tömbben lévő objektumot
     {
     /**
@@ -102,8 +144,10 @@ function RenderArray(Array) //Függvény ami renderel egy táblázatot, 2
         tableDetailT.colSpan = 2 //mivel nincsen második fogalom elem, ezért az első fogalom Oszlopszélességét átállítjuk 2-re hogy ne legyen üres cella
     }
     }
+    
 }
 RenderArray(DataArray) //Táblázat renderelés meghívása, a fejléc tömbböt, és az adattömböt tesszük bele
+
 
  /**
   * @type {string} Button elem, egy gomb
@@ -148,44 +192,7 @@ RendButtonDouble.addEventListener('click',function() //a gombhoz hozzáadunk egy
     RenderArray(DataArray) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
 })
 
-/**
- * a fejlécet fogja renderelni
- * @param {object} headerArr fejléc szöveget tartalmazó tömb
- * @returns {void} nem tér vissza semmivel
- */
-function renderHeader(headerArr) //függvény ami a fejlécet rendereli
-{
-    /**
-     * @type {string} fejléc
-     */
-    const thead = document.createElement('thead') //Létrehozunk egy fejléc elemet
-    table.appendChild(thead) //Hozzáfűzzük a táblázathoz
-    /**
-     * @type {HTMLTableRowElement} egy táblázatsor
-     */
-    const tableRow = document.createElement('tr') //létrehozunk egy táblázatsort
-    thead.appendChild(tableRow) //hozzáfűzzük a fejléchez
 
-    /**
-     * @type {HTMLTableCellElement} fejléc Cella
-     */
-    const tableHeader = document.createElement('th') //Létrehozunk egy cellát a fejléchez
-    tableRow.appendChild(tableHeader) //hozzáfűzzük a fejléchez fűzött sorhoz
-    tableHeader.innerText = headerArr[0] //A belső szövege a felécArray első eleme lesz
-    /**
-     * @type {HTMLTableCellElement} fejléc Cella
-     */
-    const tableHeaderSec = document.createElement('th') //Létrehozunk egy cellát a fejléchez
-    tableRow.appendChild(tableHeaderSec) //hozzáfűzzük a fejléchez fűzött sorhoz
-    tableHeaderSec.innerText = headerArr[1] //A belső szövege a felécArray második eleme lesz
-    /**
-     * @type {HTMLTableCellElement} fejléc Cella
-     */
-    const tableHeaderThir = document.createElement('th') //Létrehozunk egy cellát a fejléchez
-    tableRow.appendChild(tableHeaderThir) //hozzáfűzzük a fejléchez fűzött sorhoz
-    tableHeaderThir.innerText = headerArr[2] //A belső szövege a felécArray harmadik eleme lesz
-
-}
 
 
 
