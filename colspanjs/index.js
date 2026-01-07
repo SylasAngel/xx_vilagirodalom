@@ -71,6 +71,26 @@ function LogArray(headerArr,Array) //függvény ami ki fogja írni az egész tá
 }
 
 LogArray(header,DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
+ /**
+  * @type {string} Button elem, egy gomb
+  */
+const button = document.createElement('button') //létrehozzuk a button elemet
+document.body.appendChild(button) // //a doksi bodyjához hozzáfűzzük
+button.innerText = 'Gomb' //a gombon belüli szöveget megadjuk
+button.addEventListener('click',function(){ //a gombhoz hozzáadunk egy evenlistenert, ami akkor történik meg ha rákattintunk
+    /**
+     * @type {object} új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
+     */
+    const newObject = { //új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
+        Author: 'SzerzőBlank', //Szerző példaszöveg
+        Creation: 'MűBlank', // Mű példaszöveg
+        FirstConcept: 'ElsőFogalomBlank' //Első Fogalom példaszöveg
+    }
+    DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
+    LogArray(header, DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
+})
+
+
 
 
 
