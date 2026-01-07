@@ -1,229 +1,115 @@
-console.log('Szerző        | Mű                                | Fogalmak |          | ')  //kíírjuk a táblázat headjet ahol van egy üres cella
-console.log('Apollinaire   | A megsebzett galamb és a szökőkút | képvers  | emlékezés| ')  //kíírjuk a táblázat legelső adatsorát anu teljes
-console.log('Apollinaire   | Búcsú                             | avantgárd|          | ')  //kíírjuk a táblázat 2. adatsorát ahol van üres cella
-console.log('Thomas Mann   | Mario és a varázsló               | kisregény|          | ')  //kíírjuk a táblázat 3. adatsorát ahol van üres cella
-console.log('Franz Kafka   | A per                             | regény   |          | ')  //kíírjuk a táblázat 4. adatsorát ahol van üres cella
-console.log('Franz Kafka   | Az átváltozás                     | kisregény| groteszk | ')  //kíírjuk a táblázat 5. adatsorát ami teljes
+
 
 /**
- * @type {string} Head legelső eleme
+ * @type {string} header elemei
  */
-const headAuthor = 'Szerző' //head legelső elemét eltároljuk egy változóba
-/**
- * @type {string} Head második eleme
- */
-const headCreation =  'Mű ' //Head második elemét eltároljuk egy változóba
-/**
- * @type {string} Head harmadik eleme
- */
-const headConcept = 'Fogalmak' //head harmadik elemét eltároljuk egy változóba
+const header = ['Szerző','Mű','Fogalmak'] //header elemei
 
 /**
- * @type {string} első sor 1. eleme
+ * @type {Author:string,Creation:string,FirstConcept:string,SecondConcept?:string} Array elemei, ahol SecondConcept nem biztos hogy van
  */
-const ftdAuthor = 'Apollinaire ' //első sor 1. elemét eltároljuk egy változóba
-/**
- * @type {string} első sor 2. eleme
- */
-const ftdCreation = 'A megsebzett galamb és a szökőkút' //első sor 2. elemét eltároljuk egy változóba
-/**
- * @type {string} első sor 3. eleme
- */
-const ftdFirstConcept = 'képvers ' //első sor 3. elemét eltároljuk egy változóba
-/**
- * @type {string} első sor 4. eleme
- */
-const ftdSecondConcept = 'emlékezés' //első sor 4. elemét eltároljuk egy változóba
-
-/**
- * @type {string} második sor 1. eleme
- */
-const stdAuthor = 'Apollinaire' //második sor 1. elemét eltároljuk egy változóba
-/**
- * @type {string} második sor 2. eleme
- */
-const stdCreation = 'Búcsú ' //második sor 2. elemét eltároljuk egy változóba
-/**
- * @type {string} második sor 3. eleme
- */
-const stdFirstConcept = 'avantgárd' //második sor 3. elemét eltároljuk egy változóba
-
-/**
- * @type {string} harmadik sor 1. eleme
- */
-const ttdAuthor = 'Thomas Mann' //harmadik sor 1. elemét eltároljuk egy váltotóba
-/**
- * @type {string} harmadik sor 2. eleme
- */
-const ttdCreation = 'Mario és a varázsló ' //harmadik sor 2. elemét eltároljuk egy váltotóba
-/**
- * @type {string} harmadik sor 3. eleme
- */
-const ttdFirstConcept = 'kisregény' //harmadik sor 3. elemét eltároljuk egy váltotóba
-
-/**
- * @type {string} negyedik sor 1. eleme
- */
-const fottdAuthor = 'Franz Kafka ' //negyedik sor 1. elemét eltároljuk egy változóba
-/**
- * @type {string} negyedik sor 2. eleme
- */
-const fottdCreation = 'A per' //negyedik sor 2. elemét eltároljuk egy változóba
-/**
- * @type {string} negyedik sor 3. eleme
- */
-const fottdFirstConcept = 'regény' //negyedik sor 3. elemét eltároljuk egy változóba
-
-/**
- * @type {string} ötödik sor 1. eleme
- */
-const fittdAuthor = 'Franz Kafka' //ötödik sor 1. elemét eltároljuk egy változóba
-/**
- * @type {string} ötödik sor 2. eleme
- */
-const fittdCreation = 'Az átváltozás ' //ötödik sor 2. elemét eltároljuk egy változóba
-/**
- * @type {string} ötödik sor 3. eleme
- */
-const fittdFirstConcept = 'kisregény' //ötödik sor 3. elemét eltároljuk egy változóba
-/**
- * @type {string} ötödik sor 4. eleme
- */
-const fittdSecondConcept = 'groteszk' //ötödik sor 4. elemét eltároljuk egy változóba
-
-console.log(headAuthor,'|',headCreation,'|',headConcept,'|','|' ) //a változók használatával kííratjuk a headet, ahol hagyunk egy üres helyet
-console.log(ftdAuthor,'|',ftdCreation,'|',ftdFirstConcept,'|',ftdSecondConcept,'|' )//a változók használatával kííratjuk az első sort
-console.log(stdAuthor,'|',stdCreation,'|',stdFirstConcept,'|','|' ) //a változók segítségével kíírjuk a második sort, ahol hagyunk egy üres helyet
-console.log(ttdAuthor,'|',ttdCreation,'|',ttdFirstConcept,'|','|' ) //a változók segítségével kíírjuk a harmadik sort, ahol hagyunk egy üres helyet
-console.log(fottdAuthor,'|',fottdCreation,'|',fottdFirstConcept,'|','|' ) //a változók segítségével kíírjuk a negyedik sort, ahol hagyunk egy üres helyet
-console.log(fittdAuthor,'|',fittdCreation,'|',fittdFirstConcept,'|',fittdSecondConcept,'|' ) // a változók segítségével kíírjuk az ötödik sort
-
-/**
- * @type {Author:string, Creation:string, Concepts:string} object ami tartalmazza a header cellák tartalmát
- */
-const header =  //a header object elemeit megadjuk
+const DataArray = [ //Array
     {
-        Author: 'Szerző', // header első cellájának adatát tartalmazza
-        Creation: 'Mű', //header második cellájának adatát tartalmazza
-        Concepts: 'Fogalmak' //header harmadik cellájának adatát tartalmazza
+        Author:'Apollinaire', //Szerző
+        Creation:'A megsebzett galamb és a szökőkút', //Mű
+        FirstConcept: 'képvers', //Első fogalom
+        SecondConcept: 'emlékezés' //második fogalom
+    },
+    {
+        Author:  'Apollinaire', //Szerző
+        Creation:'Búcsú', //Mű
+        FirstConcept: 'avantgárd' //Első fogalom
+    },
+    {
+        Author:  'Thomas Mann', //Szerző
+        Creation:'Mario és a varázsló', //Mű
+        FirstConcept: 'kisregény' //Első fogalom
+    },
+    {
+        Author: 'Franz Kafka', //Szerző
+        Creation: 'A per', //Mű
+        FirstConcept: 'regény' //Első fogalom
+    },
+    {
+        Author:'Franz Kafka', //Szerző
+        Creation:'Az átváltozás', //Mű
+        FirstConcept: 'kisregény', //Első fogalom
+        SecondConcept: 'groteszk' //második fogalom
     }
-
+]
 /**
- * @type {Author:string,Creation:string,FirstConcept:string,SecondConcept:string} object ami az első sor adatcelláinak tartalmát tartalmazza
+ * @type {string} első sor
  */
-const FirstRow = //a FirstRow object elemeit megadjuk
+let FirstRow = DataArray[0].Author+'|'+ DataArray[0].Creation+'|'+DataArray[0].FirstConcept+'|' //Első sor 
+if(DataArray[0].SecondConcept != undefined) //leellenőrizzük hogy a secondConcept nem undefined-e
 {
-    Author: 'Appolliniare', //első sor 1. cellájának adatát tartalmazza
-    Creation: 'A megsebzett galamb és a szökőkút', //első sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'képvers', //első sor 3. cellájának adatát tartalmazza
-    SecondConcept : 'emlékezés'  //első sor 4. cellájának adatát tartalmazza
+    FirstRow+= DataArray[0].SecondConcept+ '|' //hozzáadjuk az első sorhoz a második fogalmat, igaz ág
+}
+else //else ág, hamis ág, ha a SecondConceptbe nincs semmi
+{
+    FirstRow+= '|' // hozzáfűzzük az első sorhoz az üres mezőt
 }
 
 /**
- * @type {Author:string,Creation:string, FirstConcept:string} object ami a második sor adatcelláinak tartalmát tartalmazza
+ * @type {string} második sor
  */
-const SecondRow =  //A SecondRow object elemeit megadjuk
+let SecondRow = DataArray[1].Author+'|'+ DataArray[1].Creation+'|'+DataArray[1].FirstConcept+'|' //leellenőrizzük hogy a secondConcept nem undefined, e
+if(DataArray[1].SecondConcept != undefined) //leellenőrizzük hogy a secondConcept nem undefined-e
 {
-    Author: 'Apollinaire', //második sor 1. cellájának adatát tartalmazza
-    Creation: 'Búcsú', //második sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'avantgárd', //második sor 3. cellájának adatát tartalmazza
+    FirstRow+= DataArray[1].SecondConcept+'|'//hozzáadjuk az első sorhoz a második fogalmat, igaz ág
+
+}
+else //else ág, hamis ág, ha a SecondConceptbe nincs semmi
+{
+    SecondRow+= '|' // hozzáfűzzük a második sorhoz az üres mezőt
 }
 
 /**
- * @type {Author:string,Creation:string, FirstConcept:string} object ami a harmadik sor  adatcelláinak tartalmát tartalmazza
+ * @type {string} harmadik sor
  */
-const ThirdRow = //A ThirdRow object elemeit megadjuk
+let ThirdRow = DataArray[2].Author+'|'+ DataArray[2].Creation+'|'+DataArray[2].FirstConcept+'|' //leellenőrizzük hogy a secondConcept nem undefined, e
+if(DataArray[2].SecondConcept != undefined) //leellenőrizzük hogy a secondConcept nem undefined-e
 {
-    Author: 'Thomas Mann', //harmadik sor 1. cellájának adatát tartalmazza
-    Creation: 'Mario és a varázsló', //harmadik sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'kisregény', //harmadik sor 3. cellájának adatát tartalmazza
+    ThirdRowRow+= DataArray[2].SecondConcept+'|' //hozzáadjuk az első sorhoz a második fogalmat, igaz ág
+
+}
+else //else ág, hamis ág, ha a SecondConceptbe nincs semmi
+{
+    ThirdRow+= '|' // hozzáfűzzük a harmadik sorhoz az üres mezőt
 }
 
 /**
- * @type {Author:string,Creation:string, FirstConcept:string} object ami a negyedik sor adatcelláinak tartalmát tartalmazza
+ * @type {string} negyedik sor
  */
-const FourthRow = //A FourthRow object elemeit megadjuk
+let FourthRow = DataArray[3].Author+'|'+ DataArray[3].Creation+'|'+DataArray[3].FirstConcept+'|' //leellenőrizzük hogy a secondConcept nem undefined, e
+if(DataArray[3].SecondConcept != undefined) //leellenőrizzük hogy a secondConcept nem undefined-e
 {
-    Author: 'Franz Kafka', //negyedik sor 1. cellájának adatát tartalmazza
-    Creation: 'A per', //negyedik sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'regény' //negyedik sor 3. cellájának adatát tartalmazza
+    FourthRow= DataArray[3].SecondConcept+'|' //hozzáadjuk az első sorhoz a második fogalmat, igaz ág
+}
+else //else ág, hamis ág, ha a SecondConceptbe nincs semmi
+{
+  FourthRow+= '|' // hozzáfűzzük a negyedik sorhoz az üres mezőt
 }
 
 /**
- * @type {Author:string,Creation:string,FirstConcept:string,SecondConcept:string} object ami az ötödik sor adatcelláinak tartalmát tartalmazza
- */
-const FinalRow =  //A Finalrow object elemeit megadjuk
+ * @type {string} ötödik sor
+ */ 
+let FifthRow = DataArray[4].Author+'|'+ DataArray[4].Creation+'|'+DataArray[4].FirstConcept+'|' //leellenőrizzük hogy a secondConcept nem undefined, e
+if(DataArray[4].SecondConcept != undefined) //leellenőrizzük hogy a secondConcept nem undefined-e
 {
-    Author: 'Franz Kafka', //ötödik sor 1. cellájának adatát tartalmazza
-    Creation: 'Az átváltozás', //ötödik sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'kisregény', //ötödik sor 3. cellájának adatát tartalmazza
-    SecondConcept : 'groteszk' //ötödik sor 4. cellájának adatát tartalmazza
+    FifthRow+= DataArray[4].SecondConcept+'|' //hozzáadjuk az első sorhoz a második fogalmat, igaz ág
+}
+else //else ág, hamis ág, ha a SecondConceptbe nincs semmi
+{
+    FifthRow+= '|' // hozzáfűzzük az ötödik sorhoz az üres mezőt
 }
 
-console.log(header.Author,'|',header.Creation,'|',header.Concepts,'|','|' ) //a header objectnek három adata meghívásával kiíratjuk a headert
-console.log(FirstRow.Author,'|',FirstRow.Creation,'|',FirstRow.FirstConcept,'|',FirstRow.SecondConcept,'|' ) //a FirstRow objectnek a négy adata meghívásával kiíratjuk az első sort
-console.log(SecondRow.Author,'|',SecondRow.Creation,'|',SecondRow.FirstConcept,'|','|' ) //a SecondRow objectnek a három adata meghívásával kiíratjuk a második sort
-console.log(ThirdRow.Author,'|',ThirdRow.Creation,'|',ThirdRow.FirstConcept,'|','|' ) //a ThirdRow objectnek a három adata meghívásával kiíratjuk a harmadik sort
-console.log(FourthRow.Author,'|',FourthRow.Creation,'|',FourthRow.FirstConcept,'|','|' ) //a FourthRow objectnek a három adata meghívásával kiíratjuk a negyedik sort
-console.log(FinalRow.Author,'|',FinalRow.Creation,'|',FinalRow.FirstConcept,'|',FinalRow.SecondConcept,'|' ) //a FinalRow objectnek a négy adata meghívásával kiíratjuk az utolsó sort
+console.log(header[0]+'|'+header[1]+'|'+header[2]+'|'+'|') //kiíratjuk a headert
+console.log(FirstRow) //kiratjuk az első sort
+console.log(SecondRow) //kiíratjuk a második sort
+console.log(ThirdRow) //kiíratjuk a harmadik sort
+console.log(FourthRow) //kiíratjuk a negyedik sort
+console.log(FifthRow) //kiíratjuk az ötödik sort
 
-/**
- * @type {string} A header adatait beletesszük
- */
-const HeaderArr = [ //megadjuk a header celláinak tartalmát egy arrayben
-    'Szerző',   //első adat
-    'Mű',       //második
-    'Fogalmak', //harmadik
-]
 
-/**
- * @type {string} az első sor adatait tesszük bele
- */
-const FirstRowArr = [ //megadjuk az első sor celláinak tartalmát egy arrayben
-    'Apolliniare', //első (Szerző)
-    'A megsebzett galamb és a szökőkút', //második(Mű)
-    'képvers', //harmadik(első fogalom)
-    'emlékezés', //negyedik (második fogalom)
-]
 
-/**
- * @type {string} //második sor adatait tesszük bele
- */
-const SecondRowArr = [ //megadjuk a második sor celláinak tartalmát egy arrayben
-    'Apollinaire', //első (Szerző)
-    'Búcsú', //második(Mű)
-    'avantgárd', //harmadik(első fogalom)
-]
- /**
- * @type {string} //harmadik sor adatait tesszük bele
- */
-const ThirdRowArr = [ //megadjuk a harmadik celláinak tartalmát egy arrayben
-    'Thomas Mann', //első (Szerző)
-    'Mario és a varázsló', //második(Mű)
-    'kisregény' //harmadik(első fogalom)
-]
-/**
- * @type {string} //negyedik sor adatait tesszük bele
- */
-const FourthRowArr = [ //megadjuk a negyedik celláinak tartalmát egy arrayben
-    'Franz Kafka', //első (Szerző)
-    'A per', //második(Mű)
-    'regény' //harmadik(első fogalom)
-]
-/**
- * @type {string} //ötödik sor adatait tesszük bele
- */
-
-const FinalRowArr = [ //megadjuk az utolsó sor celláinak tartalmát egy arrayben
-    'Franz Kafka', //első (Szerző)
-    'Az átváltozás', //második(Mű)
-    'kisregény', //harmadik(első fogalom)
-    'groteszk' //negyedik (második fogalom)
-]
-
-console.log(HeaderArr[0],'|',HeaderArr[1],'|',HeaderArr[2],'|','|',) //Kiíratjuk a headert a HeaderArr elemeivel amiből az első(0 indexen lévő) a Szerző, a második a Mű, a harmadik a Fogalmak
-console.log(FirstRowArr[0],'|',FirstRowArr[1],'|',FirstRowArr[2],'|',FirstRowArr[3],'|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom, a negyedik a második fogalom
-console.log(SecondRowArr[0],'|',SecondRowArr[1],'|',SecondRowArr[2],'|','|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom
-console.log(ThirdRowArr[0],'|',ThirdRowArr[1],'|',ThirdRowArr[2],'|','|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom
-console.log(FourthRowArr[0],'|',FourthRowArr[1],'|',FourthRowArr[2],'|','|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom
-console.log(FinalRowArr[0],'|',FinalRowArr[1],'|',FinalRowArr[2],'|',FinalRowArr[3],'|') //kiíratjk az első sort a FirstRowArr elemeivel amiből az első (0 indexen lévő)a Szerző, a második a mű, a harmadik az első fogalom, a negyedik a második fogalom
