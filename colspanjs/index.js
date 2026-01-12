@@ -84,11 +84,33 @@ button.addEventListener('click',function(){ //a gombhoz hozzáadunk egy evenlist
     /**
      * @type {AuthorData} új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
      */
-    
+
     const newObject = { //új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
         Author: 'SzerzőBlank', //Szerző példaszöveg
         Creation: 'MűBlank', // Mű példaszöveg
         FirstConcept: 'ElsőFogalomBlank' //Első Fogalom példaszöveg
+    }
+    DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
+    LogArray(header, DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
+})
+
+ /**
+  * @type {HTMLButtonElement} Button elem, egy gomb
+  */
+const doublebutton = document.createElement('button') //létrehozzuk a button elemet
+document.body.appendChild(doublebutton) // //a doksi bodyjához hozzáfűzzük
+doublebutton.innerText = 'duplaGomb' //a gombon belüli szöveget megadjuk
+doublebutton.addEventListener('click',function(){ //a gombhoz hozzáadunk egy evenlistenert, ami akkor történik meg ha rákattintunk
+
+    console.log('-------------------------------------------------------------------------------') //elválasztó vonal, könnyebben láthatóak az új táblázatok
+    /**
+     * @type {AuthorData} //új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
+     */
+    const newObject = { //új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
+        Author: 'SzerzőBlank', //Szerző példaszöveg
+        Creation: 'MűBlank', // Mű példaszöveg
+        FirstConcept: 'ElsőFogalomBlank', //Első Fogalom példaszöveg
+        SecondConcept: 'MásodikFogalomBlank' //Második Fogalom példaszöveg
     }
     DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
     LogArray(header, DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
