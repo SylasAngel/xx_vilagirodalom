@@ -1,12 +1,15 @@
 
 
 /**
- * @type {string []} header elemei 
+ * @type {string []} header elemei
  */
 const header = ['Szerző','Mű','Fogalmak'] //header elemei
 
 /**
- * @type {{Author:string,Creation:string,FirstConcept:string,SecondConcept?:string}[]} Array elemei, ahol SecondConcept nem biztos hogy van
+ * @typedef {{Author:string,Creation:string,FirstConcept:string,SecondConcept?:string}} AuthorData típus definíció a táblázat elemeire
+ */
+/**
+ * @type {AuthorData []} Array elemei, ahol SecondConcept nem biztos hogy van
  */
 const DataArray = [ //Array
     {
@@ -38,20 +41,36 @@ const DataArray = [ //Array
     }
 ]
 
-console.log(header[0]+'|'+header[1]+'|'+header[2]+'|'+'|') //kiíratjuk a headert
-for(const e of DataArray) //végigiterálunk a DataArray Arrayen
+
+/**
+ * függvény ami ki fogja írni az egész táblázatot
+ * @param {string []} headerArr az array amin végigiterálnuk a headerért, fejlécért
+ * @param {AuthorData []} DatArrayFunc az array amin végigiterálunk az adatsorokért
+ * @returns {void} nem tér vissza semmilyen értékkel
+ */
+function LogArray(headerArr,DatArrayFunc) //függvény ami ki fogja írni az egész táblázatot
+{
+    /**
+     * @type {string} a fejléc sora 
+     */
+    let headRow = headerArr[0]+'|'+headerArr[1]+'|'+ headerArr[2]+'|'+'|' //a megadott HeadArr-nak az adatait megadjuk egy változónak
+    console.log(headRow) //kilogoljuk a fejlécet
+    for(const e of DatArrayFunc) //végigiterálunk az Arrayen
 {
     /**
      * @type {string} változó ami megkapja a sor elemeit
      */
-    let row = e.Author+'|'+e.Creation+'|' //egy változóba beletesszük a sor első kettő elemét, az e-ben jelenleg tárolt objektum elemeit
+    let Datarow = e.Author+'|'+e.Creation+'|'+ e.FirstConcept+'|' //egy változóba beletesszük a sor első három elemét, az e-ben jelenleg tárolt objektum elemeit
     if (e.SecondConcept != undefined) //megnézzük hogy a második fogalom az undefined-e
     {
-        row+= e.FirstConcept+'|'+ e.SecondConcept +'|' //igaz ág, hozzáadjuk az első és a második fogalmat a sorhoz
+        Datarow+= e.SecondConcept +'|' //igaz ág, hozzáadjuk a második fogalmat a sorhoz
     }
     else //hamis ág
     {
-        row+= e.FirstConcept+ '|'+'|' //hozzáadjuk az első fogalmaz, és az üres helyet
+        Datarow+= '|' //üres részt hozzáadjuk a sorhoz
     }
-    console.log(row) //kiírjuk a sort, ciklus vége, következő ciklus kezdése
+    console.log(Datarow) //kiírjuk a sort, ciklus vége, következő ciklus kezdése
 }
+}
+
+LogArray(header,DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
