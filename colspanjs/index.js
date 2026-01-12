@@ -1,69 +1,44 @@
+/**
+ * @type {string []} szöveg tömb fejléc elemei
+ */
+const header = ['Szerző','Mű','Fogalmak'] //fejléc elemei
 
 /**
- * @type {{Author:string, Creation:string, Concepts:string}} object ami tartalmazza a header cellák tartalmát
+ * @type {{Author:string,Creation:string,FirstConcept:string,SecondConcept?:string} []} adatsorok elemei
  */
-const header =  //a header object elemeit megadjuk
+const DataArray = [ //adattömb
     {
-        Author: 'Szerző', // header első cellájának adatát tartalmazza
-        Creation: 'Mű', //header második cellájának adatát tartalmazza
-        Concepts: 'Fogalmak' //header harmadik cellájának adatát tartalmazza
+        Author: 'Appollinaire', //adatsor szerzője
+        Creation: 'A megsebzett galamb és a szökőkút', //adatsor műve
+        FirstConcept: 'képvers', //adatsor első fogalma
+        SecondConcept: 'emlékezés' //adatsor második fogalma
+    },
+    {
+        Author: 'Apollinaire',//adatsor szerzője
+        Creation: 'Búcsú',//adatsor műve
+        FirstConcept: 'avantgárd',//adatsor első fogalma
+    },
+    {
+        Author: 'Thomas Mann',//adatsor szerzője
+        Creation: 'Mario és a varázsló',//adatsor műve
+        FirstConcept: 'kisregény',//adatsor első fogalma
+    },
+    {
+        Author: 'Franz Kafka',//adatsor szerzője
+        Creation: 'A per',//adatsor műve
+        FirstConcept: 'regény',//adatsor első fogalma
+    },
+    {
+        Author: 'Franz Kafka',//adatsor szerzője
+        Creation: 'Az átvlátozás',//adatsor műve
+        FirstConcept: 'kisregény',//adatsor első fogalma
+        SecondConcept: 'groteszk'//adatsor második fogalma
     }
+]
 
-/**
- * @type {{Author:string,Creation:string,FirstConcept:string,SecondConcept:string}} object ami az első sor adatcelláinak tartalmát tartalmazza
- */
-const FirstRow = //a FirstRow object elemeit megadjuk
-{
-    Author: 'Appolliniare', //első sor 1. cellájának adatát tartalmazza
-    Creation: 'A megsebzett galamb és a szökőkút', //első sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'képvers', //első sor 3. cellájának adatát tartalmazza
-    SecondConcept : 'emlékezés'  //első sor 4. cellájának adatát tartalmazza
-}
-
-/**
- * @type {{Author:string,Creation:string, FirstConcept:string}} object ami a második sor adatcelláinak tartalmát tartalmazza
- */
-const SecondRow =  //A SecondRow object elemeit megadjuk
-{
-    Author: 'Apollinaire', //második sor 1. cellájának adatát tartalmazza
-    Creation: 'Búcsú', //második sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'avantgárd', //második sor 3. cellájának adatát tartalmazza
-}
-
-/**
- * @type {{Author:string,Creation:string, FirstConcept:string}} object ami a harmadik sor  adatcelláinak tartalmát tartalmazza
- */
-const ThirdRow = //A ThirdRow object elemeit megadjuk
-{
-    Author: 'Thomas Mann', //harmadik sor 1. cellájának adatát tartalmazza
-    Creation: 'Mario és a varázsló', //harmadik sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'kisregény', //harmadik sor 3. cellájának adatát tartalmazza
-}
-
-/**
- * @type {{Author:string,Creation:string, FirstConcept:string}} object ami a negyedik sor adatcelláinak tartalmát tartalmazza
- */
-const FourthRow = //A FourthRow object elemeit megadjuk
-{
-    Author: 'Franz Kafka', //negyedik sor 1. cellájának adatát tartalmazza
-    Creation: 'A per', //negyedik sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'regény' //negyedik sor 3. cellájának adatát tartalmazza
-}
-
-/**
- * @type {{Author:string,Creation:string,FirstConcept:string,SecondConcept:string}} object ami az ötödik sor adatcelláinak tartalmát tartalmazza
- */
-const FinalRow =  //A Finalrow object elemeit megadjuk
-{
-    Author: 'Franz Kafka', //ötödik sor 1. cellájának adatát tartalmazza
-    Creation: 'Az átváltozás', //ötödik sor 2. cellájának adatát tartalmazza
-    FirstConcept: 'kisregény', //ötödik sor 3. cellájának adatát tartalmazza
-    SecondConcept : 'groteszk' //ötödik sor 4. cellájának adatát tartalmazza
-}
-
-console.log(header.Author,'|',header.Creation,'|',header.Concepts,'|','|' ) //a header objectnek három adata meghívásával kiíratjuk a headert
-console.log(FirstRow.Author,'|',FirstRow.Creation,'|',FirstRow.FirstConcept,'|',FirstRow.SecondConcept,'|' ) //a FirstRow objectnek a négy adata meghívásával kiíratjuk az első sort
-console.log(SecondRow.Author,'|',SecondRow.Creation,'|',SecondRow.FirstConcept,'|','|' ) //a SecondRow objectnek a három adata meghívásával kiíratjuk a második sort
-console.log(ThirdRow.Author,'|',ThirdRow.Creation,'|',ThirdRow.FirstConcept,'|','|' ) //a ThirdRow objectnek a három adata meghívásával kiíratjuk a harmadik sort
-console.log(FourthRow.Author,'|',FourthRow.Creation,'|',FourthRow.FirstConcept,'|','|' ) //a FourthRow objectnek a három adata meghívásával kiíratjuk a negyedik sort
-console.log(FinalRow.Author,'|',FinalRow.Creation,'|',FinalRow.FirstConcept,'|',FinalRow.SecondConcept,'|' ) //a FinalRow objectnek a négy adata meghívásával kiíratjuk az utolsó sort
+console.log(header[0],'|',header[1],'|',header[2],'|','|') //fejléc kiíratása
+console.log(DataArray[0].Author,'|',DataArray[0].Creation,'|',DataArray[0].FirstConcept,'|',DataArray[0].SecondConcept,'|') //első adatsor kiíratása
+console.log(DataArray[1].Author,'|',DataArray[1].Creation,'|',DataArray[1].FirstConcept,'|','|') //második adatsor kiíratása
+console.log(DataArray[2].Author,'|',DataArray[2].Creation,'|',DataArray[2].FirstConcept,'|','|') //harmadik adatsor kiíratása
+console.log(DataArray[3].Author,'|',DataArray[3].Creation,'|',DataArray[3].FirstConcept,'|','|') //negyedik adatsor kiíratása
+console.log(DataArray[4].Author,'|',DataArray[4].Creation,'|',DataArray[4].FirstConcept,'|',DataArray[4].SecondConcept,'|') //ötödik adatsor kiíratása
