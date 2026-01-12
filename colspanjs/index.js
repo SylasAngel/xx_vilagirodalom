@@ -4,9 +4,20 @@
  * @typedef {{Author:string,Creation:string,FirstConcept:string,SecondConcept?:string}} AuthorData típusdefiníció a táblázat adataira
  */
 /**
- * @type {string []} header elemei
+ * @type {Title:string,colSpan?:Number} header elemei
  */
-const header = ['Szerző','Mű','Fogalmak'] //header elemei
+const header = [ //header elemei
+    {
+        Title: 'Szerző' //Szerző
+    },
+    {
+        Title: 'Mű' //Mű
+    },
+    {
+        Title: 'Fogalmak', //Fogalmak
+        colSpan: 2 //oszlopszélesség
+    }
+] 
 
 /**
  * @type {AuthorData[]} Array elemei, ahol SecondConcept nem biztos hogy van
@@ -48,11 +59,17 @@ const DataArray = [ //Array
     const table = document.createElement('table') //Létrehozunk egy táblázat elementet
     document.body.appendChild(table) //Hozzáfűzzük a doksi Bodyjához
     /**
-     * @type {HTMLTableElement} TáblázatTörzs
+     * @type {HTMLTableSectionElement} fejléc
+     */
+    const thead = document.createElement('thead') //Létrehozunk egy fejléc elemet
+    table.appendChild(thead) //Hozzáfűzzük a táblázathoz
+    /**
+     * @type {HTMLTableSectionElement} táblázat törzs
      */
     const tbody = document.createElement('tbody') //Létrehozunk egy táblázat törzs elemet
+        renderHeader(header,thead) // a fejlécet rendereli
     table.appendChild(tbody) //amit hozzáfűzünk a táblázathoz
-    renderHeader(header) // a fejlécet rendereli
+
 /**
  * Rendereli az index.htmlben a táblázatot
  * @param {AuthorData[]} DatArrayFunc Az adatsorok elemeit tartalmazó tömb
@@ -150,38 +167,27 @@ RendButtonDouble.addEventListener('click',function() //a gombhoz hozzáadunk egy
 /**
  * a fejlécet fogja renderelni
  * @param {string[]} headerArr fejléc szöveget tartalmazó tömb
+ * @param {HTMLTableSectionElement} tHead amihez hozzáfűzzük a sort
  * @returns {void} nem tér vissza semmivel
  */
-function renderHeader(headerArr) //függvény ami a fejlécet rendereli
+function renderHeader(headerArr,tHead) //függvény ami a fejlécet rendereli
 {
     /**
-     * @type {HTMLTableSectionElement} fejléc
+     * @type {HTMLTableRowElement} egy sor amihez fűzzük a cellákat
      */
-    const thead = document.createElement('thead') //Létrehozunk egy fejléc elemet
-    table.appendChild(thead) //Hozzáfűzzük a táblázathoz
-    /**
-     * @type {HTMLTableRowElement} egy táblázatsor
-     */
-    const tableRow = document.createElement('tr') //létrehozunk egy táblázatsort
-    thead.appendChild(tableRow) //hozzáfűzzük a fejléchez
-
-    /**
-     * @type {HTMLTableCellElement} fejléc Cella
-     */
-    const tableHeader = document.createElement('th') //Létrehozunk egy cellát a fejléchez
-    tableRow.appendChild(tableHeader) //hozzáfűzzük a fejléchez fűzött sorhoz
-    tableHeader.innerText = headerArr[0] //A belső szövege a felécArray első eleme lesz
-    /**
-     * @type {HTMLTableCellElement} fejléc Cella
-     */
-    const tableHeaderSec = document.createElement('th') //Létrehozunk egy cellát a fejléchez
-    tableRow.appendChild(tableHeaderSec) //hozzáfűzzük a fejléchez fűzött sorhoz
-    tableHeaderSec.innerText = headerArr[1] //A belső szövege a felécArray második eleme lesz
-    /**
-     * @type {HTMLTableCellElement} fejléc Cella
-     */
-    const tableHeaderThir = document.createElement('th') //Létrehozunk egy cellát a fejléchez
-    tableRow.appendChild(tableHeaderThir) //hozzáfűzzük a fejléchez fűzött sorhoz
-    tableHeaderThir.innerText = headerArr[2] //A belső szövege a felécArray harmadik eleme lesz
-
+    const TableHeaderRow = document.createElement('tr') //Létrehozunk egy sort
+    tHead.appendChild(TableHeaderRow) //hozzáfűzzük a fejléchez a sort
+    for(let i = 0; i<headerArr.length;i++) //for ciklus, végigmegy 0-tól a headerarr tömb hosszúságáigm így az indexekkel meg tudjuk kapni az objektum értékét
+    {
+        /**
+         * @type {HTMLTableCellElement} cella amit majd hozzáfűzünk a fejléchez
+         */
+        const TableHeadCell = document.createElement('th') //létrehozunk egy fejléc cellát
+        TableHeaderRow.appendChild(TableHeadCell) //hozzáfűzzük a sorhoz
+        TableHeadCell.innerText = headerArr[i].Title //a fejléc cella szövege a jelenlegi indexen lévő tömb elemének a Title értéke lesz
+        if(headerArr[i].colSpan == 2) //leellenőrizzük hogy a tömb jelenlegi objektumának a colspan értéke 2-e, igazág
+        {
+            TableHeadCell.colSpan = 2 //a cellának az oszlopszélességét beállítjuk 2-re
+        }
+    }
 }
