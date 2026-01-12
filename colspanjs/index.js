@@ -73,18 +73,19 @@ const DataArray = [ //Array
 /**
  * Rendereli az index.htmlben a táblázatot
  * @param {AuthorData[]} DatArrayFunc Az adatsorok elemeit tartalmazó tömb
+ * @param {HTMLTableSectionElement} tableBody a táblázat törzse
  * @returns {void} nem returnol semmivel
  */
-function RenderArray(DatArrayFunc) //Függvény ami renderel egy táblázatot, 2
+function RenderArray(DatArrayFunc,tableBody) //Függvény ami renderel egy táblázatot, 2
 {
-    tbody.innerHTML = '' //a tbodyt kiürítjük 
+    tableBody.innerHTML = '' //a tbodyt kiürítjük 
     for(const a of DatArrayFunc) //for ciklus ami végigiterál az adatsorokat tartalmazó tömbön, és egy változó ami felveszi a tömbben lévő objektumot
     {
     /**
      * @type {HTMLTableRowElement} Táblázat sor
      */
     const TableDataRowFirst = document.createElement('tr') //Létrehozunk egy táblázatSort
-    tbody.appendChild(TableDataRowFirst) //amit hozzáfűzünk a táblázatTörzshöz
+    tableBody.appendChild(TableDataRowFirst) //amit hozzáfűzünk a táblázatTörzshöz
     /**
      * @type {HTMLTableCellElement} táblázat sor cella
      */
@@ -119,7 +120,7 @@ function RenderArray(DatArrayFunc) //Függvény ami renderel egy táblázatot, 2
     }
     }
 }
-RenderArray(DataArray) //Táblázat renderelés meghívása, a fejléc tömbböt, és az adattömböt tesszük bele
+RenderArray(DataArray,tbody) //Táblázat renderelés meghívása, a fejléc tömbböt, és az adattömböt tesszük bele
 
  /**
   * @type {HTMLButtonElement} Button elem, egy gomb
@@ -139,7 +140,7 @@ RendButtonSimple.addEventListener('click',function() //a gombhoz hozzáadunk egy
         FirstConcept: 'ElsőFogalomBlank' //Első Fogalom példaszöveg
     }
     DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
-    RenderArray(DataArray) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
+    RenderArray(DataArray,tbody) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
 })
 
  /**
@@ -161,7 +162,7 @@ RendButtonDouble.addEventListener('click',function() //a gombhoz hozzáadunk egy
         SecondConcept: 'MásodikFogalomBlank' //Második Fogalom példaszöveg
     }
     DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
-    RenderArray(DataArray) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
+    RenderArray(DataArray,tbody) //meghívjuk a RenderArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét, a táblázatot újra legenerálja
 })
 
 /**
