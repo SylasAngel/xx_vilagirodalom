@@ -1,13 +1,13 @@
 
+/**
+ * @typedef {{Author:string,Creation:string,FirstConcept:string,SecondConcept?:string}} AuthorData típus definíció a táblázat elemeire
+ */
 
 /**
  * @type {string []} header elemei
  */
 const header = ['Szerző','Mű','Fogalmak'] //header elemei
 
-/**
- * @typedef {{Author:string,Creation:string,FirstConcept:string,SecondConcept?:string}} AuthorData típus definíció a táblázat elemeire
- */
 /**
  * @type {AuthorData []} Array elemei, ahol SecondConcept nem biztos hogy van
  */
@@ -44,8 +44,8 @@ const DataArray = [ //Array
 
 /**
  * függvény ami ki fogja írni az egész táblázatot
- * @param {string []} headerArr az array amin végigiterálnuk a headerért, fejlécért
- * @param {AuthorData []} DatArrayFunc az array amin végigiterálunk az adatsorokért
+ * @param {string[]} headerArr az array amin végigiterálnuk a headerért, fejlécért
+ * @param {AuthorData[]} DatArrayFunc az array amin végigiterálunk az adatsorokért
  * @returns {void} nem tér vissza semmilyen értékkel
  */
 function LogArray(headerArr,DatArrayFunc) //függvény ami ki fogja írni az egész táblázatot
@@ -74,3 +74,22 @@ function LogArray(headerArr,DatArrayFunc) //függvény ami ki fogja írni az eg�
 }
 
 LogArray(header,DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
+ /**
+  * @type {HTMLButtonElement} Button elem, egy gomb
+  */
+const button = document.createElement('button') //létrehozzuk a button elemet
+document.body.appendChild(button) // //a doksi bodyjához hozzáfűzzük
+button.innerText = 'Gomb' //a gombon belüli szöveget megadjuk
+button.addEventListener('click',function(){ //a gombhoz hozzáadunk egy evenlistenert, ami akkor történik meg ha rákattintunk
+    /**
+     * @type {AuthorData} új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
+     */
+    
+    const newObject = { //új tömb létrehozása hogy majd hozzáfűzzük a DataArrayhez
+        Author: 'SzerzőBlank', //Szerző példaszöveg
+        Creation: 'MűBlank', // Mű példaszöveg
+        FirstConcept: 'ElsőFogalomBlank' //Első Fogalom példaszöveg
+    }
+    DataArray.push(newObject) //hozzáfűzzük a DataArrayhez az újdonsült Newobjectünket
+    LogArray(header, DataArray) //meghívjuk a LogArray függvényt, megadjuk neki a fejléc, és az adatsorok tömbjét
+})
