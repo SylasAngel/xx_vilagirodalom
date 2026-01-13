@@ -1,4 +1,8 @@
 /**
+ * @typedef {{Author:string,Creation:string,Concept:string}} AuthorDat típusdefiníció az adatsorokhoz
+ */
+
+/**
  * @type {string} Head legelső eleme
  */
 const headAuthor = 'Szerző' //head legelső elemét eltároljuk egy változóba
@@ -12,67 +16,50 @@ const headCreation =  'Mű ' //Head második elemét eltároljuk egy változóba
 const headConcept = 'Fogalmak' //head harmadik elemét eltároljuk egy változóba
 
 /**
- * @type {string} első sor 1. eleme
+ * @type {AuthorDat} adatsor a táblázathoz
  */
-const ftdAuthor = 'Apollinaire ' //első és második sor 1. elemét eltároljuk egy változóba
+const FirstRow = { //objektum létrehozás
+    Author: 'Appolliniare', //első sor szerző adata
+    Creation: 'A megsebzett galamb és a szökőkút', //első sor mű adata
+    Concept: 'képvers' //első sor fogalom adata
+}
 /**
- * @type {string} első sor 2. eleme
+ * @type {AuthorDat} adatsor a táblázathoz
  */
-const ftdCreation = 'A megsebzett galamb és a szökőkút' //első sor 2. elemét eltároljuk egy változóba
+const SecondRow = { //objektum létrehozás
+    Author: 'Appolliniare', //második sor szerző adata
+    Creation: 'Búcsú', //második sor mű adata
+    Concept: 'avantgárd' //másodiksor fogalom adata
+}
 /**
- * @type {string} első sor 3. eleme
+ * @type {AuthorDat} adatsor a táblázathoz
  */
-const ftdFirstConcept = 'képvers ' //első sor 3. elemét eltároljuk egy változóba
-
-
+const ThirdRow = { //objektum létrehozás
+    Author: 'Thomas Mann', //harmadik sor szerző adata
+    Creation: 'Mario és a varázsló', //harmadik sor mű adata
+    Concept: 'kisregény' //harmadik sor fogalom adata
+}
 /**
- * @type {string} második sor 2. eleme
+ * @type {AuthorDat} adatsor a táblázathoz
  */
-const stdCreation = 'Búcsú ' //második sor 2. elemét eltároljuk egy változóba
+const FourthRow = { //objektum létrehozás
+    Author: 'Franz Kafka', //negyedik sor szerző adata
+    Creation: 'A per', //negyedik sor mű adata
+    Concept: 'regény' //negyediksor fogalom adata
+}
 /**
- * @type {string} második sor 3. eleme
+ * @type {AuthorDat} adatsor a táblázathoz
  */
-const stdFirstConcept = 'avantgárd' //második sor 3. elemét eltároljuk egy változóba
-
-/**
- * @type {string} harmadik sor 1. eleme
- */
-const ttdAuthor = 'Thomas Mann' //harmadik sor 1. elemét eltároljuk egy váltotóba
-/**
- * @type {string} harmadik sor 2. eleme
- */
-const ttdCreation = 'Mario és a varázsló ' //harmadik sor 2. elemét eltároljuk egy váltotóba
-/**
- * @type {string} harmadik sor 3. eleme
- */
-const ttdFirstConcept = 'kisregény' //harmadik sor 3. elemét eltároljuk egy váltotóba
-
-/**
- * @type {string} negyedik sor 1. eleme
- */
-const fottdAuthor = 'Franz Kafka ' //negyedik és az ötödik sor 1. elemét eltároljuk egy változóba
-/**
- * @type {string} negyedik sor 2. eleme
- */
-const fottdCreation = 'A per' //negyedik sor 2. elemét eltároljuk egy változóba
-/**
- * @type {string} negyedik sor 3. eleme
- */
-const fottdFirstConcept = 'regény' //negyedik sor 3. elemét eltároljuk egy változóba
-
-/**
- * @type {string} ötödik sor 2. eleme
- */
-const fittdCreation = 'Az átváltozás ' //ötödik sor 2. elemét eltároljuk egy változóba
-/**
- * @type {string} ötödik sor 3. eleme
- */
-const fittdFirstConcept = 'kisregény' //ötödik sor 3. elemét eltároljuk egy változóba
+const FifthRow = { //objektum létrehozás
+    Author: 'Franz Kafka', //ötödik sor szerző adata
+    Creation: 'Az átvlátozás', //ötödik sor mű adata
+    Concept: 'kisregény' //ötödik sor fogalom adata   
+}
 
 
 console.log(headAuthor,'|',headCreation,'|',headConcept,'|' ) //a változók használatával kííratjuk a headet
-console.log(ftdAuthor,'|',ftdCreation,'|',ftdFirstConcept,'|' )//a változók használatával kííratjuk az első sort
-console.log(ftdAuthor,'|',stdCreation,'|',stdFirstConcept,'|' ) //a változók segítségével kíírjuk a második sort
-console.log(ttdAuthor,'|',ttdCreation,'|',ttdFirstConcept,'|' ) //a változók segítségével kíírjuk a harmadik sort
-console.log(fottdAuthor,'|',fottdCreation,'|',fottdFirstConcept,'|' ) //a változók segítségével kíírjuk a negyedik sort
-console.log(fottdAuthor,'|',fittdCreation,'|',fittdFirstConcept,'|' ) // a változók segítségével kíírjuk az ötödik sort
+console.log(FirstRow.Author,'|',FirstRow.Creation,'|',FirstRow.Concept,'|' )//a változók használatával kííratjuk az első sort
+console.log(SecondRow.Author,'|',SecondRow.Creation,'|',SecondRow.Concept,'|' ) //a változók segítségével kíírjuk a második sort
+console.log(ThirdRow.Author,'|',ThirdRow.Creation,'|',ThirdRow.Concept,'|' ) //a változók segítségével kíírjuk a harmadik sort
+console.log(FourthRow.Author,'|',FourthRow.Creation,'|',FourthRow.Concept,'|' ) //a változók segítségével kíírjuk a negyedik sort
+console.log(FifthRow.Author,'|',FifthRow.Creation,'|',FifthRow.Concept,'|' ) // a változók segítségével kíírjuk az ötödik sort
