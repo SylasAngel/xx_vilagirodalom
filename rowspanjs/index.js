@@ -59,7 +59,7 @@ const FifthRow = { //objektum létrehozás
 
 console.log(headAuthor,'|',headCreation,'|',headConcept,'|' ) //a változók használatával kííratjuk a headet
 console.log(FirstRow.Author,'|',FirstRow.Creation,'|',FirstRow.Concept,'|' )//a változók használatával kííratjuk az első sort
-console.log(SecondRow.Author,'|',SecondRow.Creation,'|',SecondRow.Concept,'|' ) //a változók segítségével kíírjuk a második sort
+console.log("|_",'|',SecondRow.Creation,'|',SecondRow.Concept,'|' ) //a változók segítségével kíírjuk a második sort
 console.log(ThirdRow.Author,'|',ThirdRow.Creation,'|',ThirdRow.Concept,'|' ) //a változók segítségével kíírjuk a harmadik sort
 console.log(FourthRow.Author,'|',FourthRow.Creation,'|',FourthRow.Concept,'|' ) //a változók segítségével kíírjuk a negyedik sort
-console.log(FifthRow.Author,'|',FifthRow.Creation,'|',FifthRow.Concept,'|' ) // a változók segítségével kíírjuk az ötödik sort
+console.log("|_",'|',FifthRow.Creation,'|',FifthRow.Concept,'|' ) // a változók segítségével kíírjuk az ötödik sort
