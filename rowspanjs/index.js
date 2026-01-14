@@ -76,6 +76,29 @@ simpleButton.addEventListener('click', function() //hozzáadunk egy eventListene
     LogTable(DataArray) //kilogoljuk az updatelt táblázatot
 })
 
+/**
+ * @type {HTMLButtonElement} gomb
+ */
+const DoubleButton = document.createElement('button') //létrehozunk egy gomb elemet
+document.body.appendChild(DoubleButton) //hozzáfűzzük a html testéhez
+DoubleButton.innerText = 'Double Button' //a gomb belső szövegét megírjuk
+DoubleButton.addEventListener('click', function() //hozzáadunk egy eventListenert, ahhoz amikor rákattintunk
+{
+    /**
+     * @type {AuthorDat} új két sor amit beleteszünk az adattömbbe
+     */
+    const newObj = { //új otbjekt dekkarálás
+        Author:'Author', //szerző adat
+        FirstCreation: 'FirstCreation', //első mű adat
+        FirstConcept: 'FirstConcept', //első fogalom adat
+        SecondCreation: 'SecondCreation', //második mű adat
+        SecondConcept: 'SecondConcept' //második fogalom adat
+    }
+    DataArray.push(newObj) //az adattömbbe beletesszük az objektet
+    console.log('----------------------------------------------------------------elválasztóvonal') //elválasztóvonal
+    LogTable(DataArray) //kilogoljuk az updatelt táblázatot
+})
+
 
 
 
