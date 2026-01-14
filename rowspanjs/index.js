@@ -32,26 +32,21 @@ const DataArray =[ //adattömb deklarálás
 ]
 
 console.log(headerList[0],'|',headerList[1],'|',headerList[2],'|' ) //tömb használatával kiírjuk a fejlécet
-/**
- * @type {string} első sor adatai egy változóban, amihez majd hozzátesszük a második sort
- */
-let FirstRowContent = DataArray[0].Author +'|'+ DataArray[0].FirstCreation+'|'+ DataArray[0].FirstConcept +'|' //az első sor adatait beletesszük egy változóba
-if(DataArray[0].SecondCreation != undefined && DataArray[0].SecondConcept != undefined ) //ellenőrizzük hogy üresek-e az objekt SecondCreation és SecondConcept mezői
-{
-    FirstRowContent += '\n'+'|_ |' + DataArray[0].SecondCreation +'|'+ DataArray[0].SecondConcept +'|' //igazág, egy új sorban hozzátesszük a maradék adatokat
-}
-console.log(FirstRowContent) //kiíratjuk az első kettő sort
-console.log(DataArray[1].Author,'|',DataArray[1].FirstCreation,'|',DataArray[1].FirstConcept,'|' ) //kiíratjuk a harmadik sort
 
-/**
- * @type {string} negyedik sor adatai egy változóban, amihez majd hozzátesszük az ötödik sort
- */
-let ThirdRowContent = DataArray[2].Author +'|'+ DataArray[2].FirstCreation+'|'+ DataArray[2].FirstConcept +'|' //a negyedik sor adatait beletesszük egy változóba
-if(DataArray[2].SecondCreation != undefined && DataArray[2].SecondConcept != undefined ) //ellenőrizzük hogy üresek-e az objekt SecondCreation és SecondConcept mezői
+for(const e of DataArray) //végigiterálunk az adattömbön
 {
-    ThirdRowContent += '\n'+'|_ |' + DataArray[2].SecondCreation +'|'+ DataArray[2].SecondConcept +'|' //igazág, egy új sorban hozzátesszük a maradék adatokat
+    /**
+     * @type {string} egy változó ami fogja tárolni a sor adatait
+     */
+    let ContentRow = e.Author +'|'+ e.FirstCreation+'|'+ e.FirstConcept +'|' //a sor adatait beletesszük egy változóba
+if(e.SecondCreation != undefined && e.SecondConcept != undefined ) //ellenőrizzük hogy üresek-e az objekt SecondCreation és SecondConcept mezői
+{
+    ContentRow += '\n'+'|_ |' + e.SecondCreation +'|'+ e.SecondConcept +'|' //igazág, egy új sorban hozzátesszük a maradék adatokat
 }
-console.log(ThirdRowContent) //kiíratjuk a negyedik, ötödik sort
+console.log(ContentRow) //kiírjuk a sort
+}
+
+
 
 
 
