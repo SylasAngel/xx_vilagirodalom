@@ -43,32 +43,9 @@ document.body.appendChild(table) //táblázat hozzáfűzése a html törzséhez
 const thead = document.createElement('thead') //fejléc elem létrehozás
 table.appendChild(thead) //táblázathoz hozzáfűzés
 
-/**
- * @type {HTMLTableRowElement} sor
- */
-const tableRow = document.createElement('tr') //táblázat sor létrehozás
-thead.appendChild(tableRow) //hozzáfűzés a fejléchez
 
-/**
- * @type {HTMLTableCellElement} szerző cella
- */
-const headerAuthor = document.createElement('th') //fejléc szerző elem
-tableRow.appendChild(headerAuthor) //hozzáfűzés a fejléchez
-headerAuthor.innerText = headerList[0] //belsző szöveg megadása a headerlist objectből
 
-/**
- * @type {HTMLTableCellElement} mű cella
- */
-const headerCreation = document.createElement('th') //fejléc mű elem
-tableRow.appendChild(headerCreation) //hozzáfűzés a fejléchez
-headerCreation.innerText = headerList[1] //belsző szöveg megadása a headerlist objectből
 
-/**
- * @type {HTMLTableCellElement} fogalom cella
- */
-const headerConcept = document.createElement('th') //fejléc fogalom elem
-tableRow.appendChild(headerConcept) //hozzáfűzés a fejléchez
-headerConcept.innerText = headerList[2] //belsző szöveg megadása a headerlist objectből
 
 /**
  * @type {HTMLTableSectionElement} táblázat törzse
@@ -78,9 +55,25 @@ table.appendChild(tbody) //táblázathoz hozzáfűzés
 
 
 
-
-
-
+/**
+ * a fejlécet rendereli
+ * @param {string []} HeaderArr tömb ami a fejléc elemeit tartalmazza
+ * @param {HTMLTableSectionElement} header amihez hozzáfűzzük a fejléc adatait
+ * @returns {void} nem returnol semmit
+ */
+function RenderHeader(HeaderArr,header) //függvény ami rendereli a fejlécet
+{
+    for(const e of HeaderArr) //végigiterálunk a fejléc elemeit tartalmazó tömbön
+    {    
+    /**
+     * @type {HTMLTableCellElement} fejléc cella
+     */
+    const headerDat = document.createElement('th') //létrehozunk egy cellát
+    header.appendChild(headerDat) //hozzáfűzzük a fejléchez
+    headerDat.innerText = e //belsző szövegét megadjuk a jelenlegi headerArr elemnek
+    }
+}
+RenderHeader(headerList,thead) //meghívjuk a fejléc generáló függvényt, belerakjuk a fejléc tömböt és a fejlécet
 /**
  *  ki fogja írni a táblázatot
  * 
@@ -89,6 +82,7 @@ table.appendChild(tbody) //táblázathoz hozzáfűzés
  */
 function RenderTable(AuthorArray) //függvény, ami kiírja a táblázatot
 {
+
     tbody.innerHTML = '' //a táblázat törzs belsejét kiürítjük
     for(const e of AuthorArray) //végigiterálunk az adattömbön
     {
