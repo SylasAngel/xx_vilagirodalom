@@ -31,20 +31,29 @@ const DataArray =[ //adattömb deklarálás
     },
 ]
 
-console.log(headerList[0],'|',headerList[1],'|',headerList[2],'|' ) //tömb használatával kiírjuk a fejlécet
-
-for(const e of DataArray) //végigiterálunk az adattömbön
+/**
+ *  ki fogja írni a táblázatot
+ * 
+ * @param {AuthorDat []} AuthorArray tömb ami tartalmazza a táblázat törzs adatait
+ * @returns {void} //nem returnol semmivel
+ */
+function LogTable(AuthorArray) //függvény, ami kiírja a táblázatot
 {
+    console.log(headerList[0],'|',headerList[1],'|',headerList[2],'|' ) //tömb használatával kiírjuk a fejlécet
+    for(const e of AuthorArray) //végigiterálunk az adattömbön
+    {
     /**
      * @type {string} egy változó ami fogja tárolni a sor adatait
      */
     let ContentRow = e.Author +'|'+ e.FirstCreation+'|'+ e.FirstConcept +'|' //a sor adatait beletesszük egy változóba
-if(e.SecondCreation != undefined && e.SecondConcept != undefined ) //ellenőrizzük hogy üresek-e az objekt SecondCreation és SecondConcept mezői
-{
-    ContentRow += '\n'+'|_ |' + e.SecondCreation +'|'+ e.SecondConcept +'|' //igazág, egy új sorban hozzátesszük a maradék adatokat
+    if(e.SecondCreation != undefined && e.SecondConcept != undefined ) //ellenőrizzük hogy üresek-e az objekt SecondCreation és SecondConcept mezői
+    {
+        ContentRow += '\n'+'|_ |' + e.SecondCreation +'|'+ e.SecondConcept +'|' //igazág, egy új sorban hozzátesszük a maradék adatokat
+    }
+    console.log(ContentRow) //kiírjuk a sor(oka)t
+    }
 }
-console.log(ContentRow) //kiírjuk a sort
-}
+LogTable(DataArray) //meghívjuk a függvényt, beletesszük a DataArray tömböt
 
 
 
