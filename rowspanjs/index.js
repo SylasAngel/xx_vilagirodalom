@@ -78,9 +78,10 @@ RenderHeader(headerList,thead) //meghívjuk a fejléc generáló függvényt, be
  *  ki fogja írni a táblázatot
  * 
  * @param {AuthorDat []} AuthorArray tömb ami tartalmazza a táblázat törzs adatait
+ * @param {HTMLTableSectionElement} tableBody a táblázat törzse
  * @returns {void} //nem returnol semmivel
  */
-function RenderTable(AuthorArray) //függvény, ami kiírja a táblázatot
+function RenderTable(AuthorArray,tableBody) //függvény, ami kiírja a táblázatot
 {
 
     tbody.innerHTML = '' //a táblázat törzs belsejét kiürítjük
@@ -90,7 +91,7 @@ function RenderTable(AuthorArray) //függvény, ami kiírja a táblázatot
      * @type {HTMLTableRowElement} 1. sor elem létrehozása
      */
     const DataRow = document.createElement('tr') //sor elem létrehozás
-    tbody.appendChild(DataRow) //hozzáfűzés a törzshöz
+    tableBody.appendChild(DataRow) //hozzáfűzés a törzshöz
 
     /**
      * @type {HTMLTableCellElement} 1. adat cella
@@ -119,7 +120,7 @@ function RenderTable(AuthorArray) //függvény, ami kiírja a táblázatot
          * @type {HTMLTableRowElement} 2.sor elem létrehozása
          */
         const SecondDataRow = document.createElement('tr') //új sor létrehozása
-        tbody.appendChild(SecondDataRow) //hozzáfűzése a törzshöz
+        tableBody.appendChild(SecondDataRow) //hozzáfűzése a törzshöz
 
         /**
          * @type {HTMLTableCellElement} 4. adat cella
@@ -144,7 +145,7 @@ function RenderTable(AuthorArray) //függvény, ami kiírja a táblázatot
 
     
 }
-RenderTable(DataArray) //meghívjuk a függvényt, beletesszük a DataArray tömböt
+RenderTable(DataArray,tbody) //meghívjuk a függvényt, beletesszük a DataArray tömböt
 
 /**
  * @type {HTMLButtonElement} gomb
@@ -163,7 +164,7 @@ simpleButton.addEventListener('click', function() //hozzáadunk egy eventListene
         FirstConcept: 'regény' //első fogalom adat
     }
     DataArray.push(newObj) //az adattömbbe beletesszük az objektet
-    RenderTable(DataArray) //Rendereljük az updatelt táblázatot
+    RenderTable(DataArray,tbody) //Rendereljük az updatelt táblázatot
 })
 
 /**
@@ -185,7 +186,7 @@ DoubleButton.addEventListener('click', function() //hozzáadunk egy eventListene
         SecondConcept: 'SecondConcept' //második fogalom adat
     }
     DataArray.push(newObj) //az adattömbbe beletesszük az objektet
-    RenderTable(DataArray) //Rendereljük az updatelt táblázatot
+    RenderTable(DataArray,tbody) //Rendereljük az updatelt táblázatot
 })
 
 
