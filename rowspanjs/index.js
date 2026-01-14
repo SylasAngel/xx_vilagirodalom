@@ -1,65 +1,43 @@
 /**
- * @typedef {{Author:string,Creation:string,Concept:string}} AuthorDat típusdefiníció az adatsorokhoz
+ * @typedef {{Author:string,FirstCreation:string,FirstConcept:string,SecondCreation?:string,SecondConcept?:string}} AuthorDat típusdefiníció az adatsorokhoz
  */
 
 /**
- * @type {string} Head legelső eleme
+ * @type {string []} szó tömb am fejléc adatait tartalmazza
  */
-const headAuthor = 'Szerző' //head legelső elemét eltároljuk egy változóba
+const headerList = ['Szerző','Mű','Fogalmak'] //fejléc elemei
 /**
- * @type {string} Head második eleme
+ * @type {AuthorDat []} adatsorok adatait tartalmazó tömb
  */
-const headCreation =  'Mű ' //Head második elemét eltároljuk egy változóba
-/**
- * @type {string} Head harmadik eleme
- */
-const headConcept = 'Fogalmak' //head harmadik elemét eltároljuk egy változóba
-
-/**
- * @type {AuthorDat} adatsor a táblázathoz
- */
-const FirstRow = { //objektum létrehozás
-    Author: 'Appolliniare', //első sor szerző adata
-    Creation: 'A megsebzett galamb és a szökőkút', //első sor mű adata
-    Concept: 'képvers' //első sor fogalom adata
-}
-/**
- * @type {AuthorDat} adatsor a táblázathoz
- */
-const SecondRow = { //objektum létrehozás
-    Author: 'Appolliniare', //második sor szerző adata
-    Creation: 'Búcsú', //második sor mű adata
-    Concept: 'avantgárd' //másodiksor fogalom adata
-}
-/**
- * @type {AuthorDat} adatsor a táblázathoz
- */
-const ThirdRow = { //objektum létrehozás
-    Author: 'Thomas Mann', //harmadik sor szerző adata
-    Creation: 'Mario és a varázsló', //harmadik sor mű adata
-    Concept: 'kisregény' //harmadik sor fogalom adata
-}
-/**
- * @type {AuthorDat} adatsor a táblázathoz
- */
-const FourthRow = { //objektum létrehozás
-    Author: 'Franz Kafka', //negyedik sor szerző adata
-    Creation: 'A per', //negyedik sor mű adata
-    Concept: 'regény' //negyediksor fogalom adata
-}
-/**
- * @type {AuthorDat} adatsor a táblázathoz
- */
-const FifthRow = { //objektum létrehozás
-    Author: 'Franz Kafka', //ötödik sor szerző adata
-    Creation: 'Az átvlátozás', //ötödik sor mű adata
-    Concept: 'kisregény' //ötödik sor fogalom adata   
-}
+const DataArray =[ //adattömb deklarálás
+    {
+        Author: 'Appolliniare', //első sor szerző adata
+        FirstCreation: 'A megsebzett galamb és a szökőkút', //első sor mű adata
+        FirstConcept: 'képvers', //első sor fogalom adata
+        SecondCreation: 'Búcsú', //második sor első mű adata
+        SecondConcept: 'avantgárd' //második sor fogalom adata
+    },
+    {
+        Author: 'Thomas Mann', //harmadik sor szerző adata
+        FirstCreation: 'Mario és a varázsló', //harmadik sor mű adata
+        FirstConcept: 'kisregény' //harmadik sor fogalom adata
+    },
+    {
+        Author: 'Franz Kafka', //negyedik sor szerző adata
+        FirstCreation: 'A per', //negyedik sor mű adata
+        FirstConcept: 'regény', //negyedik sor fogalom adata
+        SecondCreation: 'Az átvlátozás', //ötödik sor mű adata
+        SecondConcept: 'kisregény' //ötödik sor fogalom adata  
+    },
+]
 
 
-console.log(headAuthor,'|',headCreation,'|',headConcept,'|' ) //a változók használatával kííratjuk a headet
-console.log(FirstRow.Author,'|',FirstRow.Creation,'|',FirstRow.Concept,'|' )//a változók használatával kííratjuk az első sort
-console.log("|_",'|',SecondRow.Creation,'|',SecondRow.Concept,'|' ) //a változók segítségével kíírjuk a második sort
-console.log(ThirdRow.Author,'|',ThirdRow.Creation,'|',ThirdRow.Concept,'|' ) //a változók segítségével kíírjuk a harmadik sort
-console.log(FourthRow.Author,'|',FourthRow.Creation,'|',FourthRow.Concept,'|' ) //a változók segítségével kíírjuk a negyedik sort
-console.log("|_",'|',FifthRow.Creation,'|',FifthRow.Concept,'|' ) // a változók segítségével kíírjuk az ötödik sort
+
+
+
+console.log(headerList[0],'|',headerList[1],'|',headerList[2],'|' ) //tömb használatával kiírjuk a fejlécet
+console.log(DataArray[0].Author,'|',DataArray[0].FirstCreation,'|',DataArray[0].FirstConcept,'|' )//a tömb használatával kííratjuk az első sort
+console.log("|_",'|',DataArray[0].SecondCreation,'|',DataArray[0].SecondConcept,'|' ) //a tömb segítségével kíírjuk a második sort
+console.log(DataArray[1].Author,'|',DataArray[1].FirstCreation,'|',DataArray[1].FirstConcept,'|' ) //a tömb segítségével kíírjuk a harmadik sort
+console.log(DataArray[2].Author,'|',DataArray[2].FirstCreation,'|',DataArray[2].FirstConcept,'|' ) //a tömb segítségével kíírjuk a negyedik sort
+console.log("|_",'|',DataArray[2].SecondCreation,'|',DataArray[2].SecondConcept,'|' ) //a tömb segítségével kíírjuk az ötödik sort
