@@ -55,6 +55,29 @@ function LogTable(AuthorArray) //függvény, ami kiírja a táblázatot
 }
 LogTable(DataArray) //meghívjuk a függvényt, beletesszük a DataArray tömböt
 
+/**
+ * @type {HTMLButtonElement} gomb
+ */
+const simpleButton = document.createElement('button') //létrehozunk egy gomb elemet
+document.body.appendChild(simpleButton) //hozzáfűzzük a html testéhez
+simpleButton.innerText = 'Simple Button' //a gomb belső szövegét megírjuk
+simpleButton.addEventListener('click', function() //hozzáadunk egy eventListenert, ahhoz amikor rákattintunk
+{
+    /**
+     * @type {AuthorDat} új sor amit beleteszünk az adattömbbe
+     */
+    const newObj = { //új otbjekt dekkarálás
+        Author:'Miguel de Cervantes', //szerző adat
+        FirstCreation: 'Donquioxote', //első mű adat
+        FirstConcept: 'regény' //első fogalom adat
+    }
+    DataArray.push(newObj) //az adattömbbe beletesszük az objektet
+    console.log('----------------------------------------------------------------elválasztóvonal') //elválasztóvonal
+    LogTable(DataArray) //kilogoljuk az updatelt táblázatot
+})
+
+
+
 
 
 
