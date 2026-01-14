@@ -32,28 +32,125 @@ const DataArray =[ //adattömb deklarálás
 ]
 
 /**
+ * @type {HTMLTableElement} táblázat
+ */
+const table = document.createElement('table') //táblázat elemet létrehozunk
+document.body.appendChild(table) //táblázat hozzáfűzése a html törzséhez
+
+/**
+ * @type {HTMLTableSectionElement} fejléc
+ */
+const thead = document.createElement('thead') //fejléc elem létrehozás
+table.appendChild(thead) //táblázathoz hozzáfűzés
+
+/**
+ * @type {HTMLTableRowElement} sor
+ */
+const tableRow = document.createElement('tr') //táblázat sor létrehozás
+thead.appendChild(tableRow) //hozzáfűzés a fejléchez
+
+/**
+ * @type {HTMLTableCellElement} szerző cella
+ */
+const headerAuthor = document.createElement('th') //fejléc szerző elem
+tableRow.appendChild(headerAuthor) //hozzáfűzés a fejléchez
+headerAuthor.innerText = headerList[0] //belsző szöveg megadása a headerlist objectből
+
+/**
+ * @type {HTMLTableCellElement} mű cella
+ */
+const headerCreation = document.createElement('th') //fejléc mű elem
+tableRow.appendChild(headerCreation) //hozzáfűzés a fejléchez
+headerCreation.innerText = headerList[1] //belsző szöveg megadása a headerlist objectből
+
+/**
+ * @type {HTMLTableCellElement} fogalom cella
+ */
+const headerConcept = document.createElement('th') //fejléc fogalom elem
+tableRow.appendChild(headerConcept) //hozzáfűzés a fejléchez
+headerConcept.innerText = headerList[2] //belsző szöveg megadása a headerlist objectből
+
+/**
+ * @type {HTMLTableSectionElement} táblázat törzse
+ */
+const tbody = document.createElement('tbody') //táblázat törzs elem létrehozás
+table.appendChild(tbody) //táblázathoz hozzáfűzés
+
+
+
+
+
+
+/**
  *  ki fogja írni a táblázatot
  * 
  * @param {AuthorDat []} AuthorArray tömb ami tartalmazza a táblázat törzs adatait
  * @returns {void} //nem returnol semmivel
  */
-function LogTable(AuthorArray) //függvény, ami kiírja a táblázatot
+function RenderTable(AuthorArray) //függvény, ami kiírja a táblázatot
 {
-    console.log(headerList[0],'|',headerList[1],'|',headerList[2],'|' ) //tömb használatával kiírjuk a fejlécet
+    tbody.innerHTML = '' //a táblázat törzs belsejét kiürítjük
     for(const e of AuthorArray) //végigiterálunk az adattömbön
     {
     /**
-     * @type {string} egy változó ami fogja tárolni a sor adatait
+     * @type {HTMLTableRowElement} 1. sor elem létrehozása
      */
-    let ContentRow = e.Author +'|'+ e.FirstCreation+'|'+ e.FirstConcept +'|' //a sor adatait beletesszük egy változóba
-    if(e.SecondCreation != undefined && e.SecondConcept != undefined ) //ellenőrizzük hogy üresek-e az objekt SecondCreation és SecondConcept mezői
+    const DataRow = document.createElement('tr') //sor elem létrehozás
+    tbody.appendChild(DataRow) //hozzáfűzés a törzshöz
+
+    /**
+     * @type {HTMLTableCellElement} 1. adat cella
+     */
+    const RowDataFirst = document.createElement('td') //adatsor első eleme
+    DataRow.appendChild(RowDataFirst) //hozzáfűzés az adatsorhoz
+    RowDataFirst.innerText = e.Author //belső szöveg, szerző
+
+    /**
+     * @type {HTMLTableCellElement} 2. adat cella
+     */
+    const RowDataSecond = document.createElement('td') //adatsor második eleme
+    DataRow.appendChild(RowDataSecond) //hozzáfűzés az adatsorhoz
+    RowDataSecond.innerText = e.FirstCreation //belső szöveg, mű
+
+    /**
+     * @type {HTMLTableCellElement} 3. adat cella
+     */
+    const RowDataThird = document.createElement('td') //adatsor harmadik eleme
+    DataRow.appendChild(RowDataThird) //hozzáfűzés az adatsorhoz
+    RowDataThird.innerText = e.FirstConcept //belső szöveg, fogalom
+
+    if(e.SecondCreation != undefined && e.SecondConcept != undefined) //megnézzük hogy a második fogalom, és a második mű értéke üres-e, igazág
     {
-        ContentRow += '\n'+'|_ |' + e.SecondCreation +'|'+ e.SecondConcept +'|' //igazág, egy új sorban hozzátesszük a maradék adatokat
+        /**
+         * @type {HTMLTableRowElement} 2.sor elem létrehozása
+         */
+        const SecondDataRow = document.createElement('tr') //új sor létrehozása
+        tbody.appendChild(SecondDataRow) //hozzáfűzése a törzshöz
+
+        /**
+         * @type {HTMLTableCellElement} 4. adat cella
+         */
+        const RowDataFourth = document.createElement('td') //új cella létehozása
+        SecondDataRow.appendChild(RowDataFourth) //hozzáfűzése az új sorhoz
+        RowDataFourth.innerText = e.SecondCreation //belső szöveg, második mű
+
+        /**
+         * @type {HTMLTableCellElement} 5. adat cella
+         */
+        const RowDataFifth = document.createElement('td') //új cella létrehozása
+        SecondDataRow.appendChild(RowDataFifth) //hozzáfűzése az új sorhoz
+        RowDataFifth.innerText = e.SecondConcept //belső szöveg, második fogalom
+
+        RowDataFirst.rowSpan = 2 //a sorszélességet átállítjuk 2-re
+
     }
-    console.log(ContentRow) //kiírjuk a sor(oka)t
+
+
     }
+
+    
 }
-LogTable(DataArray) //meghívjuk a függvényt, beletesszük a DataArray tömböt
+RenderTable(DataArray) //meghívjuk a függvényt, beletesszük a DataArray tömböt
 
 /**
  * @type {HTMLButtonElement} gomb
@@ -72,8 +169,7 @@ simpleButton.addEventListener('click', function() //hozzáadunk egy eventListene
         FirstConcept: 'regény' //első fogalom adat
     }
     DataArray.push(newObj) //az adattömbbe beletesszük az objektet
-    console.log('----------------------------------------------------------------elválasztóvonal') //elválasztóvonal
-    LogTable(DataArray) //kilogoljuk az updatelt táblázatot
+    RenderTable(DataArray) //Rendereljük az updatelt táblázatot
 })
 
 /**
@@ -95,8 +191,7 @@ DoubleButton.addEventListener('click', function() //hozzáadunk egy eventListene
         SecondConcept: 'SecondConcept' //második fogalom adat
     }
     DataArray.push(newObj) //az adattömbbe beletesszük az objektet
-    console.log('----------------------------------------------------------------elválasztóvonal') //elválasztóvonal
-    LogTable(DataArray) //kilogoljuk az updatelt táblázatot
+    RenderTable(DataArray) //Rendereljük az updatelt táblázatot
 })
 
 
