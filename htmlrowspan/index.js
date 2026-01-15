@@ -2,10 +2,10 @@
  * @typedef {Author:string,Creation:string,FirstConcept:string,SecCreation?:string,SecConcept?:string} Author A táblázat adatai tömbjének típusa
  */
 
-    /**
-     * @type {HTMLTableSectionElement} táblázat törzse
-     */
-    const tbody = document.querySelector('#htmlTableBody') //id alapján lekérjük a táblázattörzsöt
+/**
+ * @type {HTMLTableSectionElement} táblázat törzse
+ */
+const tbody = document.querySelector('#htmlTableBody') //id alapján lekérjük a táblázattörzsöt
 
 /**
  * @type {HTMLButtonElement} gomb elemet lekérjük
@@ -58,23 +58,17 @@ function AddRow(DataArray,TbodyAppend) //definiáljuk a függvényt
     /**
      * @type {HTMLTableCellElement} táblázat cella
      */
-    const FirstCell = document.createElement('td') //cella elem létrehozás
-    tableRow.appendChild(FirstCell) //hozzáfűzés a sorhoz
-    FirstCell.innerText = DataArray.Author //belső szöveg, Szerző elem
+    const FirstCell = CreateCell(DataArray.Author,tableRow,'td') //Létrehozzuk az első cellát, amit egy változóba beleteszünk, hogy majd tudjunk neki rowspant adni
 
     /**
      * @type {HTMLTableCellElement} táblázat cella
      */
-    const SecondCell = document.createElement('td') //cella elem létrehozás
-    tableRow.appendChild(SecondCell) //hozzáfűzés a sorhoz
-    SecondCell.innerText = DataArray.Creation //belső szöveg, Mű elem
+    CreateCell(DataArray.Creation,tableRow,'td') //létrehozzuk a második cellát
 
     /**
      * @type {HTMLTableCellElement} táblázat cella
      */
-    const ThirdCell = document.createElement('td') //cella elem létrehozás
-    tableRow.appendChild(ThirdCell) //hozzáfűzés a sorhoz
-    ThirdCell.innerText = DataArray.FirstConcept //belső szöveg, Fogalom elem
+    CreateCell(DataArray.FirstConcept,tableRow,'td') //létrehozzuk a harmadik cellát
 
     if(DataArray.SecConcept != undefined && DataArray.SecCreation != undefined) //igazág megnézzük hogy a második mű és fogalom adatok az üresek-e
     {
@@ -87,17 +81,30 @@ function AddRow(DataArray,TbodyAppend) //definiáljuk a függvényt
     /**
      * @type {HTMLTableCellElement} cella
      */
-    const FourthCell = document.createElement('td') //cella elem létrehozás
-    SecondRow.appendChild(FourthCell) //hozzáfűzés a sorhoz
-    FourthCell.innerText = DataArray.SecCreation //belső szöveg, 2. mű elem
-
+    CreateCell(DataArray.SecCreation,SecondRow,'td') //létrehozzuk a negyedik cellát
     /**
      * @type {HTMLTableCellElement} cella
      */
-    const FifthCell = document.createElement('td') //cella elem létrehozás
-    SecondRow.appendChild(FifthCell) //hozzáfűzés a sorhoz
-    FifthCell.innerText = DataArray.SecConcept //belső szöveg, 2. Fogalom elem
+    CreateCell(DataArray.SecConcept,SecondRow,'td') //létrehozzuk az ötödik cellát
 
     FirstCell.rowSpan = 2 //sorszélességet átállítjuk 2-re , mert ez duplasoros
     }
+}
+
+/**
+ * létrehoz egy cellát
+ * @param {string} InText a szöveg ami benne lesz a cellába 
+ * @param {HTMLTableRowElement} ToAppend aihez hozzáfűzzük a cellát
+ * @param {string} Type amilyen típusu lesz a cella td/th
+ * @returns {HTMLTableCellElement} returnoli magát a cellát
+ */
+function CreateCell(InText,ToAppend,Type) //függvény ami létrehoz egy cellát
+{
+    /**
+     * @type {HTMLTableCellElement} cella 
+     */
+    const tCell = document.createElement(Type) //létrehozunk egy cellát
+    ToAppend.appendChild(tCell) //hozzáfűzzük amit megadtunk a toAppendbe
+    tCell.innerText = InText //belső szöveg, a paraméter alapján
+    return tCell //returnoli magát a cellát
 }
